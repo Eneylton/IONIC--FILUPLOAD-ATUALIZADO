@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Nova Galeria </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item>
+        <button ion-button small (click)="abreGaleria()" >Galeria</button>
+        <h1>Exibir Foto</h1>
+        <img [src]="foto" >
+        <button ion-button small (click)="inputFilaChange()" >Enviar</button>
+    </ion-item> 
+      
+
+    <form [formGroup]="formGroup" (ngSubmit)="adicionar(); $event.preventDefault()">
+        <ion-list>
+
+          <ion-item>
+            <ion-label floating>Nome</ion-label>
+            <ion-input formControlName="nome" type="text"></ion-input>
+          </ion-item>
+
+   
+          <ion-input hidden type="text" formControlName="img" value="{{base64Img}}" ></ion-input>
+      
+        </ion-list>
+    
+        <button color="secondary" ion-button block type="submit" [disabled]="formGroup.invalid">Cadastrar</button>
+    
+      </form>
+
+</ion-content>
